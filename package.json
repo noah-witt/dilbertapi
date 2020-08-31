@@ -1,0 +1,19 @@
+{
+  "name": "dilbertapi",
+  "version": "0.0.1",
+  "description": "dilbert api",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noah-witt/dilbertapi.git"
+  },
+  "author": "Noah Witt <noah@noah-witt.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noah-witt/dilbertapi/issues"
+  },
+  "homepage": "https://github.com/noah-witt/dilbertapi#readme"
+}
