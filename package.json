@@ -1,8 +1,10 @@
 {
-  "name": "@noah-witt/dilbertapi",
-  "version": "0.0.2",
+  "name": "@noahwitt/dilbertapi",
+  "version": "1.0.1",
   "description": "dilbert api",
   "main": "build/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc",
   "scripts": {
     "test": "tsc&&./node_modules/mocha/bin/mocha",
     "build": "tsc"
@@ -28,8 +30,5 @@
     "got": "^11.5.2",
     "jsdom": "^16.4.0",
     "moment-timezone": "^0.5.31"
-  },
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/"
   }
 }
