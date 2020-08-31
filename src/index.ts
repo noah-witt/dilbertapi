@@ -45,7 +45,7 @@ export async function getByDateString(date: string):Promise<dilbertComic> {
         const dom = new JSDOM(response.body);
         const splitUrl =response.url.split('/');
         return {
-            url: dom.window.document.querySelector('.img-responsive').getAttribute('src').trim(),
+            url: "https:"+dom.window.document.querySelector('.img-responsive').getAttribute('src').trim(),
             title: dom.window.document.querySelector('.comic-title-name').textContent.trim(),
             date: splitUrl[splitUrl.length-1].trim()
         }
