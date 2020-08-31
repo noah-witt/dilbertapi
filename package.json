@@ -1,9 +1,9 @@
 {
   "name": "@noahwitt/dilbertapi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "dilbert api",
   "main": "build/index.js",
-  "types": "dist/index.d.ts",
+  "types": "build/index.d.ts",
   "prepublish": "tsc",
   "scripts": {
     "test": "tsc&&./node_modules/mocha/bin/mocha",
