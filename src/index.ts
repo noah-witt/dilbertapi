@@ -3,7 +3,7 @@ import * as moment from 'moment-timezone';
 import { JSDOM } from 'jsdom';
 import { off } from 'process';
 
-interface dilbertComic {
+export interface dilbertComic {
     url: string;
     title: string;
     date: string;

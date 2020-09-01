@@ -12,7 +12,7 @@ describe('Pull Some Comics', function() {
     })
     it('should return the correct object', async function() {
         this.timeout(50000);
-        const goal = {url: '//assets.amuniversal.com/5abe86d0bfb101381a80005056a9545d', title: 'No More Id Badges',date: '2020-08-31' };
+        const goal = {url: 'https://assets.amuniversal.com/5abe86d0bfb101381a80005056a9545d', title: 'No More Id Badges',date: '2020-08-31' };
         const actual = await dilbert.getByDateString('2020-08-31');
         assert.equal(goal.url, actual.url);
         assert.equal(goal.title, actual.title);
