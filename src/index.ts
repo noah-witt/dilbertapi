@@ -2,6 +2,7 @@ import Got from 'got';
 import * as moment from 'moment-timezone';
 import { JSDOM } from 'jsdom';
 import { off } from 'process';
+import { exception } from 'console';
 
 export interface dilbertComic {
     url: string;
@@ -19,8 +20,17 @@ export const dilbertStart = moment().second(0).minute(0).hour(12).date(16).month
  * @throws dilbert get exception
  */
 export async function getLatest():Promise<dilbertComic>{
+    let counter: number =0;
     let time = moment().add(1, 'day').startOf('day');
-    return await getByMomentObject(time);
+    while(true) {
+        try {
+            return await getByMomentObject(time);
+        } catch(error) {
+            counter++;
+            if(counter>7) throw "dilbert get exception";
+            time = time.subtract(1, 'day');
+        }
+    }
 }
 
 /**
@@ -37,6 +47,7 @@ async function getByMomentObject(date: moment.Moment):Promise<dilbertComic> {
  * returns the time.
  * @param date the date as a string
  * @throws dilbert get exception
+ * @throws invalid date exception
  */
 export async function getByDateString(date: string):Promise<dilbertComic> {
     try {
@@ -44,13 +55,13 @@ export async function getByDateString(date: string):Promise<dilbertComic> {
         if(response.statusCode!==200) throw "request error";
         const dom = new JSDOM(response.body);
         const splitUrl =response.url.split('/');
+        if(splitUrl.length!=5) throw 'invalid date';
         return {
             url: dom.window.document.querySelector('.img-responsive').getAttribute('src').trim(),
             title: dom.window.document.querySelector('.comic-title-name').textContent.trim(),
             date: splitUrl[splitUrl.length-1].trim()
         }
     } catch (error) {
-        console.log(error);
         throw 'dilbert get exception';
     }
 }
